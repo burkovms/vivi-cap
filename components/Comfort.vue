@@ -1,4 +1,84 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import { onMounted } from 'vue';
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  const comfort = [
+    {
+      imgSrc: '/img/img-originality-1.png',
+      text: `<ul>
+              <li>
+                Надійно закривається з характерним звуком, забезпечуючи
+                безпеку напою.
+              </li>
+              <li>
+                Зручний клапан з парковкою зберігає температуру напою та
+                запобігає випадковому проливанню.
+              </li>
+              <li>
+                Елегантний зовнішній вигляд з унікальним декором додає
+                вашому напою преміальності.
+              </li>
+              <li>
+                Можливість переносити кілька стаканів в одній руці завдяки
+                штабелюванню — це не лише зручно для ваших клієнтів, але й
+                сприяє збільшенню продажів напоїв.
+              </li>
+              <li>
+                Приємне пиття, подібне до пиття з відкритого стакана,
+                підвищує лояльність клієнтів.
+              </li>
+              <li>
+                Унікальна конструкція кришки дозволяє безпечно пити гарячі
+                напої.
+              </li>
+              <li>
+                Має ексклюзивні патенти по всьому світу, які не мають
+                аналогів.
+              </li>
+            </ul>`,
+    },
+    {
+      imgSrc: '/img/img-originality-2.png',
+      text: `<h3>Спеціальна форма кришки дозволяє надійно переносити кілька стаканів в одній руці, а також поставити у заглиблення кекс або печиво</h3>`,
+    },
+  ];
+
+  onMounted(() => {
+    gsap.fromTo(
+      '.comfort-slogan',
+      { opacity: 0, x: 200 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 5,
+        scrollTrigger: {
+          trigger: '.comfort-slogan',
+          start: 'top 90%',
+          end: 'top 50%',
+          scrub: 1,
+        },
+      }
+    );
+
+    gsap.fromTo(
+      '.comfort-title',
+      { opacity: 0, x: -200 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 5,
+        scrollTrigger: {
+          trigger: '.comfort-title',
+          start: 'top 90%',
+          end: 'top 50%',
+          scrub: 1,
+        },
+      }
+    );
+  });
+</script>
 
 <template>
   <section class="comfort">
@@ -16,69 +96,17 @@
       </h2>
 
       <div class="comfort__container">
-        <div class="row comfort__item">
-          <div data-speed="1" class="col-12 col-lg-6 comfort__img">
-            <NuxtImg
-              src="/img/img-originality-1.png"
-              alt="Cap"
-              loading="lazy"
-            />
+        <div
+          v-for="(item, index) in comfort"
+          :key="index"
+          class="row comfort__item"
+        >
+          <div class="col-12 col-lg-6 comfort__img">
+            <NuxtImg :src="item.imgSrc" alt="Cap" loading="lazy" />
           </div>
-          <div data-speed=".8" class="col-12 col-lg-6 comfort__text">
+          <div class="col-12 col-lg-6 comfort__text">
             <div class="text-block">
-              <h3></h3>
-              <div class="block-content">
-                <ul>
-                  <li>
-                    Надійно закривається з характерним звуком, забезпечуючи
-                    безпеку напою.
-                  </li>
-                  <li>
-                    Зручний клапан з парковкою зберігає температуру напою та
-                    запобігає випадковому проливанню.
-                  </li>
-                  <li>
-                    Елегантний зовнішній вигляд з унікальним декором додає
-                    вашому напою преміальності.
-                  </li>
-                  <li>
-                    Можливість переносити кілька стаканів в одній руці завдяки
-                    штабелюванню — це не лише зручно для ваших клієнтів, але й
-                    сприяє збільшенню продажів напоїв.
-                  </li>
-                  <li>
-                    Приємне пиття, подібне до пиття з відкритого стакана,
-                    підвищує лояльність клієнтів.
-                  </li>
-                  <li>
-                    Унікальна конструкція кришки дозволяє безпечно пити гарячі
-                    напої.
-                  </li>
-                  <li>
-                    Має ексклюзивні патенти по всьому світу, які не мають
-                    аналогів.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row comfort__item">
-          <div data-speed="1" class="col-12 col-lg-6 comfort__img">
-            <NuxtImg
-              src="/img/img-originality-2.png"
-              alt="Cap"
-              loading="lazy"
-            />
-          </div>
-          <div data-speed=".8" class="col-12 col-lg-6 comfort__text">
-            <div class="text-block">
-              <h3>
-                Спеціальна форма кришки дозволяє надійно переносити кілька
-                стаканів в одній руці, а також поставити у заглиблення кекс або
-                печиво
-              </h3>
+              <div class="block-content" v-html="item.text"></div>
             </div>
           </div>
         </div>

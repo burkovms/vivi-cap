@@ -95,7 +95,7 @@
     if (video) {
       video.currentTime = 0;
       video.play().catch((err) => {
-        console.warn('Не вдалося запустити відео:', err);
+        // console.warn('Не вдалося запустити відео:', err);
       });
     }
   };
