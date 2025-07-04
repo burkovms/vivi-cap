@@ -1,0 +1,244 @@
+@use "@/assets/styles/utils/index" as *;
+
+.block-content {
+  * + {
+    * {
+      margin-top: 30px;
+    }
+  }
+
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $white;
+  }
+
+  * + h1,
+  * + h2,
+  * + h3,
+  * + h4,
+  * + h5,
+  * + h6 {
+    margin-top: 60px;
+  }
+  h1 + *,
+  h2 + *,
+  h3 + *,
+  h4 + *,
+  h5 + *,
+  h6 + * {
+    margin-top: 40px;
+  }
+  p + p {
+    margin-top: 30px;
+  }
+
+  hr + * {
+    margin-top: 30px;
+  }
+  * + hr {
+    margin-top: 30px;
+  }
+  * + ul,
+  * + ol {
+    margin-top: 30px;
+  }
+  ul {
+    h6 {
+      line-height: 24px;
+      + * {
+        margin-top: 10px;
+      }
+    }
+    ol,
+    ul {
+      padding-left: 30px;
+    }
+    > li + li {
+      margin-top: 30px;
+    }
+    > li {
+      position: relative;
+      padding-left: 42px;
+      &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: -2px;
+        width: 28px;
+        height: 28px;
+        background: url("/img/list-marker.svg") no-repeat center;
+        background-size: contain;
+      }
+    }
+  }
+  ol {
+    counter-reset: li;
+    + * {
+      margin-top: 20px;
+    }
+    ul,
+    ol {
+      padding-left: 20px;
+      > li > li {
+        margin-top: 17px;
+      }
+      > li {
+        position: relative;
+        padding-left: 30px;
+        .rtl & {
+          padding-left: 0;
+          padding-right: 30px;
+        }
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 3px;
+          width: 14px;
+          height: 14px;
+          background-color: $accent;
+          border-radius: 5px;
+        }
+        &:after {
+          content: "";
+          position: absolute;
+          left: 5px;
+          top: 5px;
+          display: block;
+          width: 4px;
+          height: 8px;
+          border: solid $accent;
+          border-width: 0 2px 2px 0;
+          opacity: 1;
+          transition: $transition;
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    > li + li {
+      margin-top: 20px;
+    }
+    > li {
+      position: relative;
+      padding-left: 30px;
+      &:before {
+        counter-increment: li;
+        content: counter(li);
+        position: absolute;
+        font-size: 14px;
+        left: 0;
+        top: 3px;
+        width: 20px;
+        height: 20px;
+        background: linear-gradient(180deg, #988fff 0%, #6155ed 100%);
+        color: $white;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        line-height: 1;
+        border-radius: 50%;
+      }
+    }
+  }
+  blockquote {
+    display: flex;
+    position: relative;
+    border-top: 1px solid $gray;
+    border-bottom: 1px solid $gray;
+    overflow: hidden;
+    padding: 40px 15px;
+    @media (min-width: 768px) {
+      padding: 30px 80px;
+      max-width: 80%;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    @media (min-width: 992px) {
+      padding: 35px 120px;
+    }
+    &:before,
+    &:after {
+      content: "``";
+      position: absolute;
+      font-size: 40px;
+      color: $accent;
+      letter-spacing: -0.01em;
+      font-weight: 700;
+      line-height: 90px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    &:before {
+      top: -10px;
+      left: 0;
+      @media (min-width: 768px) {
+        top: 0px;
+        left: 30px;
+      }
+      @media (min-width: 992px) {
+        left: 40px;
+      }
+    }
+    &:after {
+      right: 0;
+      bottom: -40px;
+      @media (min-width: 768px) {
+        right: 30px;
+      }
+      @media (min-width: 992px) {
+        right: 40px;
+      }
+    }
+  }
+  * + blockquote {
+    margin-top: 30px;
+  }
+  blockquote + * {
+    margin-top: 30px;
+  }
+  img.alignleft {
+    float: left;
+  }
+  img.alignright {
+    float: right;
+  }
+  img {
+    &[style*="float: left"],
+    &[class*="alignleft"],
+    &.alignleft {
+      margin-right: 20px;
+      margin-bottom: 20px;
+      @media (max-width: 576px) {
+        width: 100%;
+        margin-right: 0;
+        float: none !important;
+      }
+    }
+    &[style*="float: right"],
+    &[class*="alignright"],
+    .alignright {
+      margin-left: 20px;
+      margin-bottom: 20px;
+      @media (max-width: 576px) {
+        width: 100%;
+        margin-left: 0;
+        float: none !important;
+      }
+    }
+  }
+}

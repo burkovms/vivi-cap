@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "lint": "eslint . --ext .js,.ts,.vue"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.4.0",
+    "@nuxtjs/google-fonts": "^3.2.0",
+    "eslint": "^9.27.0",
+    "eslint-plugin-nuxt": "^4.0.0",
+    "eslint-plugin-vue": "^10.1.0",
+    "nuxt": "^3.17.3",
+    "prettier": "^3.5.3",
+    "sass": "^1.89.0",
+    "sass-loader": "^16.0.5",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@nuxt/image": "^1.10.0"
+  }
+}

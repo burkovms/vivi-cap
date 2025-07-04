@@ -1,0 +1,61 @@
+@use "@/assets/styles/utils/index" as *;
+
+button,
+input[type="button"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+  font-family: $font_family;
+  font-size: inherit;
+}
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+textarea {
+  font-size: inherit;
+  display: block;
+  width: 100%;
+  height: 50px;
+  padding: 0 20px;
+  font-family: $font_family;
+  border: 1px solid $black;
+  box-shadow: none;
+  border-radius: $border_radius;
+  transition: $transition;
+  &:hover {
+    border-color: $accent;
+  }
+  &:focus {
+    border-color: $accent;
+    &::placeholder {
+      transform: translateX(5px);
+      opacity: 0;
+    }
+  }
+  &::placeholder {
+    opacity: 1;
+    color: rgba($black, 0.5);
+    transition: $transition;
+  }
+}
+
+textarea {
+  resize: none;
+  height: 156px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}

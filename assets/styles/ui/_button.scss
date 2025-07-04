@@ -1,0 +1,20 @@
+@use "@/assets/styles/utils/index" as *;
+
+.btn {
+  color: $white;
+  background-color: $accent;
+  text-decoration: none;
+  text-align: center;
+  line-height: 50px;
+  height: 50px;
+  display: inline-block;
+  min-width: 200px;
+  border: 1px solid $accent;
+  border-radius: $border_radius;
+  transition: $transition;
+  user-select: none;
+  &:hover {
+    color: $accent;
+    background-color: transparent;
+  }
+}
