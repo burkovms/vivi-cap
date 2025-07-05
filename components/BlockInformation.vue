@@ -13,12 +13,14 @@
       class="bg-img block-video__img-top-right"
       src="/img/cap-video-2.png"
       alt="background image"
+      quality="100"
     />
     <NuxtImg
       loading="lazy"
       class="bg-img block-video__img-bottom-right"
       src="/img/cap-video-3.png"
       alt="background image"
+      quality="100"
     />
 
     <div class="container-fluid">

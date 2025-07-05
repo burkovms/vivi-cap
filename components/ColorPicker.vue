@@ -83,6 +83,7 @@
                 :src="cap.capSrc"
                 :alt="cap.name"
                 loading="lazy"
+                quality="100"
               />
             </div>
 
