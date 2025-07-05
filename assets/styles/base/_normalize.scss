@@ -130,6 +130,11 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
+
+html,
+body {
+  min-height: 100vh;
+}
 * {
   box-sizing: border-box;
   outline: none !important;

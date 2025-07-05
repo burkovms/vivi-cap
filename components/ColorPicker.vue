@@ -1,84 +1,7 @@
 <script setup lang="ts">
-  const colors = [
-    {
-      color: '2b2b2b',
-      name: 'Black',
-      capSrc: '/img/picker/caps/Black.png',
-      cups: [
-        { logo: 'default', src: '/img/picker/cups/black/black_white.png' },
-        { logo: '6c5c44', src: '/img/picker/cups/black/black_brown.png' },
-        { logo: '4a786d', src: '/img/picker/cups/black/black_green.png' },
-        { logo: 'ff0000', src: '/img/picker/cups/black/black_red.png' },
-        { logo: 'bebebe', src: '/img/picker/cups/black/black_white.png' },
-        { logo: 'ffff00', src: '/img/picker/cups/black/black_yellow.png' },
-      ],
-    },
-    {
-      color: '6c5c44',
-      name: 'Brown',
-      capSrc: '/img/picker/caps/Brown.png',
-      cups: [
-        { logo: '2b2b2b', src: '/img/picker/cups/brown/brown_black.png' },
-        { logo: 'default', src: '/img/picker/cups/brown/brown_white.png' },
-        { logo: '4a786d', src: '/img/picker/cups/brown/brown_green.png' },
-        { logo: 'ff0000', src: '/img/picker/cups/brown/brown_red.png' },
-        { logo: 'bebebe', src: '/img/picker/cups/brown/brown_white.png' },
-        { logo: 'ffff00', src: '/img/picker/cups/brown/brown_yellow.png' },
-      ],
-    },
-    {
-      color: '4a786d',
-      name: 'Green',
-      capSrc: '/img/picker/caps/Green.png',
-      cups: [
-        { logo: '2b2b2b', src: '/img/picker/cups/green/green_black.png' },
-        { logo: '6c5c44', src: '/img/picker/cups/green/green_brown.png' },
-        { logo: 'default', src: '/img/picker/cups/green/green_black.png' },
-        { logo: 'ff0000', src: '/img/picker/cups/green/green_red.png' },
-        { logo: 'bebebe', src: '/img/picker/cups/green/green_white.png' },
-        { logo: 'ffff00', src: '/img/picker/cups/green/green_yellow.png' },
-      ],
-    },
-    {
-      color: 'ff0000',
-      name: 'Red',
-      capSrc: '/img/picker/caps/Red.png',
-      cups: [
-        { logo: '2b2b2b', src: '/img/picker/cups/red/red_black.png' },
-        { logo: '6c5c44', src: '/img/picker/cups/red/red_brown.png' },
-        { logo: '4a786d', src: '/img/picker/cups/red/red_green.png' },
-        { logo: 'default', src: '/img/picker/cups/red/red_black.png' },
-        { logo: 'bebebe', src: '/img/picker/cups/red/red_white.png' },
-        { logo: 'ffff00', src: '/img/picker/cups/red/red_yellow.png' },
-      ],
-    },
-    {
-      color: 'bebebe',
-      name: 'White',
-      capSrc: '/img/picker/caps/Transparent.png',
-      cups: [
-        { logo: '2b2b2b', src: '/img/picker/cups/white/white_black.png' },
-        { logo: '6c5c44', src: '/img/picker/cups/white/white_brown.png' },
-        { logo: '4a786d', src: '/img/picker/cups/white/white_green.png' },
-        { logo: 'ff0000', src: '/img/picker/cups/white/white_red.png' },
-        { logo: 'default', src: '/img/picker/cups/white/white_black.png' },
-        { logo: 'ffff00', src: '/img/picker/cups/white/white_yellow.png' },
-      ],
-    },
-    {
-      color: 'ffff00',
-      name: 'Yellow',
-      capSrc: '/img/picker/caps/Yellow.png',
-      cups: [
-        { logo: '2b2b2b', src: '/img/picker/cups/yellow/yellow_black.png' },
-        { logo: '6c5c44', src: '/img/picker/cups/yellow/yellow_brown.png' },
-        { logo: '4a786d', src: '/img/picker/cups/yellow/yellow_green.png' },
-        { logo: 'ff0000', src: '/img/picker/cups/yellow/yellow_red.png' },
-        { logo: 'bebebe', src: '/img/picker/cups/yellow/yellow_white.png' },
-        { logo: 'default', src: '/img/picker/cups/yellow/yellow_black.png' },
-      ],
-    },
-  ];
+  import { colorsData } from '@/data/colors';
+
+  const colors = colorsData;
 
   const selectedCap = ref('2b2b2b');
   const selectedCup = ref('2b2b2b');
@@ -111,20 +34,18 @@
 
 <template>
   <section class="color-picker__section">
-    <div class="border-text section-slogan">
-      <span>особливість</span>
-    </div>
+    <SectionTitles>
+      <template #slogan>особливість</template>
+      <template #title>Великий вибір кольорів</template>
+      <p class="text-after-title text-xl mt30">
+        Ви можете використовувати як стандартні кольори кришки, так і замовити
+        свій підібраний за зразком або RAL колір
+      </p>
+    </SectionTitles>
 
     <div class="container-fluid">
-      <div class="section-title">
-        <h2>Великий вибір кольорів</h2>
-        <p class="text-after-title text-xl mt30">
-          Ви можете використовувати як стандартні кольори кришки, так і замовити
-          свій підібраний за зразком або RAL колір
-        </p>
-      </div>
       <div class="row color-picker__row">
-        <div class="col-12 col-lg-3 color-picker__col">
+        <div class="col-12 col-lg-4 col-xl-3 color-picker__col">
           <div class="color-picker__item">
             <h4 class="title">
               Виберіть колір вашої кришки та склянки та подивіться, як буде
@@ -148,7 +69,7 @@
           </div>
         </div>
 
-        <div class="col-12 col-lg-6 color-picker__imgs-wrap">
+        <div class="col-12 col-lg-4 col-xl-6 color-picker__imgs-wrap">
           <div class="color-picker__imgs">
             <div class="color-picker__caps imgs">
               <NuxtImg
@@ -180,7 +101,7 @@
           </div>
         </div>
 
-        <div class="col-12 col-lg-3 color-picker__col">
+        <div class="col-12 col-lg-4 col-xl-3 color-picker__col">
           <div class="color-picker__item">
             <h4 class="title">Відмінне поєднання з вашою склянкою</h4>
             <div class="color-picker__item-colors cup-nav-colors">
@@ -208,6 +129,9 @@
   .color-picker {
     &__section {
       padding-top: 300px;
+      @media (max-width: $media_xl) {
+        padding-top: 200px;
+      }
       @media (max-width: $media_sm) {
         padding-top: 140px;
       }
@@ -247,10 +171,18 @@
       text-align: center;
 
       .title {
-        @media (max-width: $media_lg) {
-          font-size: 22px;
+        min-height: 91px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        @media (max-width: $media_xxl) {
+          min-height: 75px;
+        }
+        @media (max-width: $media_md) {
+          min-height: auto;
         }
         @media (max-width: $media_xs) {
+          display: block;
           text-align: left;
         }
       }
@@ -298,6 +230,7 @@
       &.active {
         pointer-events: none;
         .color {
+          padding: 6px;
           &:after {
             content: '';
             position: absolute;
@@ -341,7 +274,9 @@
         }
 
         &:hover {
-          padding: 0;
+          @media (min-width: 1025px) {
+            padding: 6px;
+          }
         }
 
         span {
@@ -369,8 +304,8 @@
       margin-left: auto;
       margin-right: auto;
       @media (max-width: $media_lg) {
-        max-width: 450px;
-        height: 552px;
+        max-width: 280px;
+        height: 362px;
       }
       @media (max-width: $media_sm) {
         max-width: 325px;

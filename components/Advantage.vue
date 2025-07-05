@@ -26,15 +26,14 @@
 <template>
   <section class="advantage">
     <NuxtImg class="img-rotate" src="/img/text-round.svg" loading="lazy" />
-    <div class="border-text section-slogan">
-      <span>Перевага</span>
-    </div>
-    <div class="container-fluid">
-      <h2 class="section-title">інформація для клієнтів</h2>
-    </div>
+
+    <SectionTitles>
+      <template #slogan>Перевага</template>
+      <template #title>інформація для клієнтів</template>
+    </SectionTitles>
 
     <div class="container-fluid">
-      <div class="row row30 advantage__row">
+      <div class="row row60 advantage__row">
         <div class="col-3" v-for="item in advantages" :key="item.id">
           <div class="advantage__item">
             <div class="icon custom-icon">
@@ -58,9 +57,16 @@
     padding-top: 200px;
     position: relative;
     overflow: hidden;
-    @media (max-width: $media_lg) {
+    @media (max-width: $media_xl) {
       margin-top: 150px;
       padding-top: 140px;
+    }
+    @media (max-width: $media_lg) {
+      margin-top: 100px;
+      padding-top: 120px;
+    }
+    @media (max-width: $media_sm) {
+      margin-top: 80px;
     }
     .img-rotate {
       position: absolute;
@@ -68,7 +74,7 @@
       right: -100px;
       animation: rotate-text 50s linear infinite;
       z-index: -1;
-      @media (max-width: $media_lg) {
+      @media (max-width: $media_xl) {
         max-width: 280px;
         right: -70px;
       }
@@ -79,8 +85,10 @@
 
     &__row {
       margin-top: 210px;
-      @media (max-width: $media_lg) {
+      @media (max-width: $media_xl) {
         margin-top: 140px;
+      }
+      @media (max-width: $media_lg) {
         > div {
           flex: 0 0 50%;
           max-width: 50%;

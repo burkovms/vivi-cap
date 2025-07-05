@@ -1,9 +1,12 @@
 <script setup lang="ts">
   import { onMounted, ref } from 'vue';
   const isVisible = ref(false);
+  const videoRef = ref<HTMLVideoElement | null>(null);
 
   onMounted(() => {
     setTimeout(() => {
+      videoRef.value?.play();
+      videoRef.value?.classList.add('visible');
       isVisible.value = true;
     }, 100);
   });
@@ -24,6 +27,7 @@
     <div class="cap-animation">
       <video
         id="myVideo"
+        ref="videoRef"
         poster=""
         preload=""
         autoplay
@@ -153,8 +157,12 @@
     video {
       display: block;
       width: 100%;
+      opacity: 0;
       @media (max-width: $media_xs) {
         max-height: 50vh;
+      }
+      &.visible {
+        opacity: 1;
       }
     }
   }

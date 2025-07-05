@@ -1,49 +1,9 @@
 <script setup lang="ts">
+  import { comfortData } from '@/data/comfort';
   import { onMounted } from 'vue';
   import gsap from 'gsap';
   import ScrollTrigger from 'gsap/ScrollTrigger';
   gsap.registerPlugin(ScrollTrigger);
-
-  const comfort = [
-    {
-      imgSrc: '/img/img-originality-1.png',
-      text: `<ul>
-              <li>
-                Надійно закривається з характерним звуком, забезпечуючи
-                безпеку напою.
-              </li>
-              <li>
-                Зручний клапан з парковкою зберігає температуру напою та
-                запобігає випадковому проливанню.
-              </li>
-              <li>
-                Елегантний зовнішній вигляд з унікальним декором додає
-                вашому напою преміальності.
-              </li>
-              <li>
-                Можливість переносити кілька стаканів в одній руці завдяки
-                штабелюванню — це не лише зручно для ваших клієнтів, але й
-                сприяє збільшенню продажів напоїв.
-              </li>
-              <li>
-                Приємне пиття, подібне до пиття з відкритого стакана,
-                підвищує лояльність клієнтів.
-              </li>
-              <li>
-                Унікальна конструкція кришки дозволяє безпечно пити гарячі
-                напої.
-              </li>
-              <li>
-                Має ексклюзивні патенти по всьому світу, які не мають
-                аналогів.
-              </li>
-            </ul>`,
-    },
-    {
-      imgSrc: '/img/img-originality-2.png',
-      text: `<h3>Спеціальна форма кришки дозволяє надійно переносити кілька стаканів в одній руці, а також поставити у заглиблення кекс або печиво</h3>`,
-    },
-  ];
 
   onMounted(() => {
     gsap.fromTo(
@@ -92,12 +52,12 @@
       </div>
 
       <h2 class="text-center comfort-title">
-        нашою кришкою зручно <br />користуватися, тому що:
+        Нашою кришкою зручно <br />користуватися, тому що:
       </h2>
 
       <div class="comfort__container">
         <div
-          v-for="(item, index) in comfort"
+          v-for="(item, index) in comfortData"
           :key="index"
           class="row comfort__item"
         >
@@ -120,13 +80,27 @@
     margin-top: 450px;
     position: relative;
     overflow: hidden;
-    @media (max-width: $media_lg) {
-      margin-top: 250px;
+    @media (max-width: $media_xl) {
+      margin-top: 200px;
     }
     @media (max-width: $media_sm) {
       margin-top: 140px;
-      .comfort-title {
+    }
+    .comfort-title {
+      text-transform: uppercase;
+      @media (max-width: $media_sm) {
         text-align: left;
+      }
+    }
+
+    .border-text {
+      &.comfort-slogan {
+        span {
+          @media (max-width: $media_sm) {
+            padding-left: 0;
+            padding-right: 0;
+          }
+        }
       }
     }
     &__slogan-wrap {
@@ -135,7 +109,7 @@
 
     &__container {
       margin-top: 140px;
-      @media (max-width: $media_md) {
+      @media (max-width: $media_xl) {
         margin-top: 90px;
       }
       @media (max-width: $media_xs) {
@@ -157,14 +131,14 @@
             @media (max-width: $media_xl) {
               padding-left: 50px;
             }
-            @media (max-width: $media_md) {
+            @media (max-width: $media_lg) {
               padding-left: 0;
             }
           }
         }
       }
       + * {
-        margin-top: 80px;
+        margin-top: 100px;
       }
     }
 
@@ -182,6 +156,9 @@
       img {
         max-width: 550px;
         width: 100%;
+        @media (max-width: $media_xl) {
+          max-width: 480px;
+        }
         @media (max-width: $media_md) {
           max-width: 400px;
         }
@@ -206,12 +183,11 @@
         @media (max-width: $media_xl) {
           padding-right: 50px;
         }
-        @media (max-width: $media_md) {
+        @media (max-width: $media_lg) {
           padding-right: 0;
         }
       }
       .block-content {
-        margin-top: 40px;
         font-size: 18px;
         ul > li:after {
           top: 0;

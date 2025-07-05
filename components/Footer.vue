@@ -1,4 +1,7 @@
 <script setup lang="ts">
+  import { useScrollAnchor } from '~/composables/useScrollAnchor';
+  const { scrollAnchor } = useScrollAnchor();
+
   const contacts = {
     phones: ['+38 050 70 30 10', '+38 093 50 30 20'],
     emails: ['info@viviplast.com', 'sales@viviplast.com'],
@@ -30,10 +33,22 @@
         <div class="col-12 col-sm-6 col-md-6 col-xl-2 footer-menu__wrap">
           <ul class="footer-menu menu">
             <li class="anchor-link">
-              <a class="link-animate" href="#originality">Переваги</a>
+              <a
+                class="link-animate"
+                href="#originality"
+                @click.prevent="scrollAnchor('originality')"
+              >
+                Переваги
+              </a>
             </li>
             <li class="anchor-link">
-              <a class="link-animate" href="#footer">Контакти</a>
+              <a
+                class="link-animate"
+                href="#footer"
+                @click.prevent="scrollAnchor('footer')"
+              >
+                Контакти
+              </a>
             </li>
           </ul>
         </div>

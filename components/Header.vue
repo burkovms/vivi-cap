@@ -10,6 +10,10 @@
     isOpenMenu.value = !isOpenMenu.value;
     document.body.classList.toggle('no-scroll');
   };
+  const closeMenu = () => {
+    isOpenMenu.value = false;
+    document.body.classList.remove('no-scroll');
+  };
 
   let lastScroll = 0;
 
@@ -66,7 +70,12 @@
               <a
                 class="link-animate"
                 href="#originality"
-                @click.prevent="scrollAnchor('originality')"
+                @click.prevent="
+                  () => {
+                    scrollAnchor('originality');
+                    closeMenu();
+                  }
+                "
               >
                 Переваги
               </a>
@@ -85,7 +94,12 @@
               <a
                 class="link-animate"
                 href="#footer"
-                @click.prevent="scrollAnchor('footer')"
+                @click.prevent="
+                  () => {
+                    scrollAnchor('footer');
+                    closeMenu();
+                  }
+                "
               >
                 Контакти
               </a>
@@ -300,18 +314,6 @@
           transform: translate(-50%, -50%) rotate(-45deg);
         }
       }
-    }
-  }
-
-  .page-header {
-    padding-top: calc(80px + 175px);
-    padding-bottom: 80px;
-    background-color: rgba($black, 0.5);
-    @media (max-width: $media_xl) {
-      padding-top: calc(80px + 135px);
-    }
-    @media (max-width: $media_sm) {
-      padding-top: calc(80px + 78px);
     }
   }
 </style>
